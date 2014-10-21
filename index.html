@@ -2,28 +2,49 @@
 <html>
 <head>
 	<title>Maquerau</title>
+	<link rel="icon" type="image/ico" href="https://raw.githubusercontent.com/malko/maquereau/gh-pages/favicon.ico" />
 	<script>
 		var src=window.location.href.replace(/\/(index.html)?[^/]*$/,'/maquereau.js').replace(/https?:/,'');
 		// create a bookmarklet link
 		function createBookmarkletLink(label, method){
-			return "<li><a  href=\"javascript:(function(W,U){var D=W.document,$=D.querySelectorAll,C=function(){W.maquereau."
+			document.write("<li><a  href=\"javascript:(function(W,U){var D=W.document,$=D.querySelectorAll,C=function(){W.maquereau."
 				+ method + "();},s,k; W.maquereau || (s=D.createElement('script')); s&&(s.src='"
 				+ src + "')&&D.head.appendChild(s);if(s){s.onload=s.onreadystatechange=function(){if(!k&&(!s.readyState||s.readyState.match(/^loaded|complete$/))){k=1;C();}};}else{C();}})(window);\">"
-				+ label + "</a></li>";
+				+ label + "</a></li>");
 		}
 	</script>
+	<style>
+		body { text-align: center; font-family: Arial, Sans Serif; font-size:.8em; color:#333; background:#fff; width:480px; margin:auto;}
+		dl { margin:1.5em auto; text-align: left; display:table;}
+		h1 {font-size:2em;}
+		a { color:#000;}
+		a:hover{ color:#c33}
+		dt {font-weight:bold; margin:1em 0 .5em 0; list-style:none;}
+		dd {margin:0;padding:0;}
+		p {font-size:1.2em; margin:0; padding:0;}
+	</style>
 </head>
 <body>
 	<h1>Maquerau</h1>
-	list of bookmarklets to include:
-	<ul>
-		<script>
-			document.write(createBookmarkletLink('start a new macro','start'));
-			document.write(createBookmarkletLink('stop recording','stop'));
-			document.write(createBookmarkletLink('replay last macro','replayLast'));
-			document.write(createBookmarkletLink('displayList','displayList'));
-			document.write(createBookmarkletLink('set step time','setStepTime'));
-		</script>
-	</ul>
+	<p>
+		Drag and drop following links to your bookmarks bar then just click them on any site.
+	</p>
+	<dl>
+		<dt><script>createBookmarkletLink('start a new macro','start')</script></dt>
+		<dd>Start a record session.</dd>
+
+		<dt><script>createBookmarkletLink('stop recording','stop')</script></dt>
+		<dd>Stop a record session and prompt you for a session name.</dd>
+
+		<dt><script>createBookmarkletLink('replay last macro','replayLast')</script></dt>
+		<dd>Replay the last macro played or recorded.</dd>
+
+		<dt><script>createBookmarkletLink('displayList','displayList')</script></dt>
+		<dd>Display a list of recorded macro for the page your visiting.</dd>
+
+		<dt><script>createBookmarkletLink('set step time','setStepTime')</script></dt>
+		<dd>Change the default waiting time before retrying a missed click (default to 350ms). Reset the setting by setting a blank or 0 value in the prompt. </dd>
+	</dl>
+	<img src="icon.orig.png" />
 </body>
 </html>
